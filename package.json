@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "jest",
+    "test:update": "yarn test --updateSnapshot",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

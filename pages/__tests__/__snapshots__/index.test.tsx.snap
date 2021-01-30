@@ -1,7 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index page should match the snapshot 1`] = `
-<div>
-  Loading...
-</div>
+<ul>
+  <li>
+    <a
+      href="/create"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Create Form
+    </a>
+  </li>
+  <li>
+    <a
+      href="/edit/1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Edit Form ID #1
+    </a>
+  </li>
+  <li>
+    <a
+      href="/view/1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      View Form ID #1
+    </a>
+  </li>
+  <li>
+    <a
+      href="/gql"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Bonus: View some GQL data
+    </a>
+  </li>
+</ul>
 `;
