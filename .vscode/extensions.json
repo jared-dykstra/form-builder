@@ -3,5 +3,6 @@
     "dbaeumer.vscode-eslint",
     "streetsidesoftware.code-spell-checker",
     "graphql.vscode-graphql",
+    "davidanson.vscode-markdownlint"
   ]
 }

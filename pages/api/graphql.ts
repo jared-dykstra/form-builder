@@ -14,6 +14,7 @@ const resolvers = {
     sayHello(/* parent, args, context */) {
       return 'Hello World!'
     },
+    // NOTE: This is temporary - I have no intention of building my own user-management system
     users(/* parent, args, context */) {
       return [{ name: 'Alice' }, { name: 'Bob' }, { name: 'Carlos' }]
     },

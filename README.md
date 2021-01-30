@@ -1,24 +1,26 @@
-# Bootstrap
-Bootstrapped via: https://github.com/paulintrognon/next-typescript
+# Form Builder
 
-# API routes with GraphQL server
+## Project Bootstrap
 
-Next.js ships with [API routes](https://github.com/vercel/next.js#api-routes), which provide an easy solution to build your own `API`. This example shows their usage alongside [apollo-server-micro](https://github.com/apollographql/apollo-server/tree/main/packages/apollo-server-micro) to provide simple GraphQL server consumed by Next.js app.
+How this project was bootstrapped:
 
-## Deploy your own
+- `yarn create-next-app --example api-routes-graphql api-routes-graphql-app`
+- Typescript & tooling & VSCode config via: https://github.com/paulintrognon/next-typescript
+- material-ui added via `pages/_app.tsx` and `pages/_document.tsx`
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+Minor note: The spec says no back-end.  However, I've never used Next.js before and wanted to go through the exercise of setting it up.  This project would work well with a BFF (Back-end-for-front-end) architecture, such that newly created forms are automatically persisted.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/api-routes-graphql&project-name=api-routes-graphql&repository-name=api-routes-graphql)
+## Dev Setup
 
-## How to use
+- Use VScode with recommended extensions
+- NVM will auto-select the LTS version of node.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Scripts
 
-```bash
-npx create-next-app --example api-routes-graphql api-routes-graphql-app
-# or
-yarn create next-app --example api-routes-graphql api-routes-graphql-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- `dev` Start the development server with fast refresh
+- `build` create a production webpack build
+- `start` run the production build
+- `lint` run the linter
+- `lint:fix` run the linter and auto-fix fixable errors
+- `test` run unit tests
+- `typecheck` run typescript to check for typescript errors
