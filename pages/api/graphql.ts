@@ -2,17 +2,20 @@ import { ApolloServer, gql } from 'apollo-server-micro'
 
 const typeDefs = gql`
   type Query {
+    sayHello: String
     users: [User!]!
   }
   type User {
     name: String
   }
 `
-
 const resolvers = {
   Query: {
-    users(parent, args, context) {
-      return [{ name: 'Nextjs' }]
+    sayHello(/* parent, args, context */) {
+      return 'Hello World!'
+    },
+    users(/* parent, args, context */) {
+      return [{ name: 'Alice' }, { name: 'Bob' }, { name: 'Carlos' }]
     },
   },
 }

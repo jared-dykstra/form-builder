@@ -1,3 +1,6 @@
+# Bootstrap
+Bootstrapped via: https://github.com/paulintrognon/next-typescript
+
 # API routes with GraphQL server
 
 Next.js ships with [API routes](https://github.com/vercel/next.js#api-routes), which provide an easy solution to build your own `API`. This example shows their usage alongside [apollo-server-micro](https://github.com/apollographql/apollo-server/tree/main/packages/apollo-server-micro) to provide simple GraphQL server consumed by Next.js app.
