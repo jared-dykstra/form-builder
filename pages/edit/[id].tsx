@@ -1,9 +1,16 @@
 import { useRouter } from 'next/router'
 
-const Edit = () => {
+import { Edit } from 'components/Edit'
+import { Page } from 'components/Page'
+
+const EditPage = () => {
   const router = useRouter()
   const { id } = router.query
-  return <div>Edit id: {id}</div>
+  return (
+    <Page>
+      <Edit id={id as string} />
+    </Page>
+  )
 }
 
-export default Edit
+export default EditPage

@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import fetch from 'cross-fetch'
-
 import useSWR from 'swr'
+
+import { Page } from 'components/Page'
 
 // TODO: If I actually want to do any back-end stuff, Replace with the apollo-client useQuery hook and
 // auto-generate typescript types from the GQL schema
@@ -22,20 +23,20 @@ interface Data {
   users: { name: string }[]
 }
 
-export const IndexPage: NextPage = () => {
+export const GqlPage: NextPage = () => {
   const { data, error } = useSWR<Data>('{ users { name } }', fetcher)
 
   const users = data?.users || []
 
   return (
-    <div>
+    <Page splash>
       {error && 'Failed to load'}
       {!data && 'Loading...'}
       {users.map((user, i) => (
         <div key={i}>{user.name}</div>
       ))}
-    </div>
+    </Page>
   )
 }
 
-export default IndexPage
+export default GqlPage

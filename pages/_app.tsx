@@ -7,6 +7,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const theme = useMemo(() => createMuiTheme(), [])
 
+  // TODO: This seems so janky.  There's got to be a better way to integrate material-ui to next.js
+  // At least with SSR there wouldn't be a CSS flash
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')

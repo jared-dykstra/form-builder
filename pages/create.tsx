@@ -1,3 +1,6 @@
-const Edit = () => <div>Create</div>
+import type { NextPage } from 'next'
+import { Page } from 'components/Page'
 
-export default Edit
+const Create: NextPage = () => <Page>Create</Page>
+
+export default Create

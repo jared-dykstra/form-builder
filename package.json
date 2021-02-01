@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "apollo-server-micro": "2.11.0",
     "cross-fetch": "^3.0.6",
     "graphql": "14.6.0",
