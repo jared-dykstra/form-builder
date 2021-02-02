@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import { LockOutlined as LockIcon } from '@material-ui/icons'
 
-import { Page } from 'components/Page'
+import { Page } from 'components'
 
 const useStyles = makeStyles((theme) => ({
   avatar: {

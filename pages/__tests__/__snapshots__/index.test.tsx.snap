@@ -2,7 +2,7 @@
 
 exports[`Index page should match the snapshot 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-8"
+  className="MuiBox-root MuiBox-root-9"
 >
   <header
     className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
@@ -10,6 +10,18 @@ exports[`Index page should match the snapshot 1`] = `
     <div
       className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root"
+        focusable="false"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+        />
+      </svg>
       <h6
         className="MuiTypography-root makeStyles-title-4 MuiTypography-h6"
         onClick={[Function]}
@@ -57,7 +69,7 @@ exports[`Index page should match the snapshot 1`] = `
     </div>
   </header>
   <div
-    className="MuiBox-root MuiBox-root-9"
+    className="MuiBox-root MuiBox-root-10"
   >
     <main
       className="MuiGrid-root makeStyles-main-3 MuiGrid-container"
@@ -69,7 +81,7 @@ exports[`Index page should match the snapshot 1`] = `
         className="MuiPaper-root MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-8 MuiGrid-grid-md-5 MuiPaper-elevation6"
       >
         <div
-          className="makeStyles-paper-6"
+          className="makeStyles-paper-6 makeStyles-paper-8"
         >
           <nav
             aria-label="create edit view"

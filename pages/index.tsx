@@ -13,7 +13,7 @@ import {
 
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Page } from 'components/Page'
+import { Page } from 'components'
 
 interface ListItemLinkProps {
   icon: ListItemIconProps['children']

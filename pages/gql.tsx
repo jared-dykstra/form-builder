@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import fetch from 'cross-fetch'
 import useSWR from 'swr'
 
-import { Page } from 'components/Page'
+import { Page } from 'components'
 
 // TODO: If I actually want to do any back-end stuff, Replace with the apollo-client useQuery hook and
 // auto-generate typescript types from the GQL schema

@@ -1,14 +1,12 @@
-import { useRouter } from 'next/router'
-
-import { Edit } from 'components/Edit'
-import { Page } from 'components/Page'
+import { EditorWithPreview, Page } from 'components'
+import { useId, useFormBuilder } from 'hooks'
 
 const EditPage = () => {
-  const router = useRouter()
-  const { id } = router.query
+  const id = useId()
+  const { form } = useFormBuilder(id)
   return (
     <Page>
-      <Edit id={id as string} />
+      <EditorWithPreview form={form} />
     </Page>
   )
 }

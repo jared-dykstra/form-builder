@@ -1,11 +1,14 @@
-import { useRouter } from 'next/router'
+import { Viewer, Page } from 'components'
+import { useId, useFormBuilder } from 'hooks'
 
-import { Page } from 'components/Page'
-
-const View = () => {
-  const router = useRouter()
-  const { id } = router.query
-  return <Page>View id: {id}</Page>
+const ViewPage = () => {
+  const id = useId()
+  const { form } = useFormBuilder(id)
+  return (
+    <Page>
+      <Viewer form={form} />
+    </Page>
+  )
 }
 
-export default View
+export default ViewPage

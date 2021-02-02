@@ -1,7 +1,9 @@
 import type { FC } from 'react'
 import NextLink from 'next/link'
-// import MenuIcon from '@material-ui/icons/Menu'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import {
+  AccountCircle as AccountCircleIcon,
+  Home as HomeIcon,
+} from '@material-ui/icons'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -15,12 +17,17 @@ import {
   Typography,
 } from '@material-ui/core'
 
+interface Props {
+  splash?: boolean
+}
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
   main: { height: '100%' },
   title: {
+    paddingLeft: '1rem;',
     cursor: 'pointer',
   },
   image: {
@@ -33,31 +40,28 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
-  paper: {
-    margin: theme.spacing(8, 4),
+  paper: ({ splash }: Props) => ({
+    margin: splash ? theme.spacing(8, 4) : undefined,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
+    height: '100%',
+  }),
   grow: {
     flexGrow: 1,
   },
 }))
 
-interface Props {
-  splash?: boolean
-}
-
 export const Page: FC<Props> = ({ splash = false, children }) => {
-  const classes = useStyles()
+  const classes = useStyles({ splash })
 
   return (
     <Box height="100vh" display="flex" flexDirection="column">
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
+          <NextLink href="/">
+            <HomeIcon />
+          </NextLink>
           <NextLink href="/">
             <Typography variant="h6" className={classes.title}>
               Form Builder
