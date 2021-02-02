@@ -1,16 +1,19 @@
 import type { FC } from 'react'
 import NextLink from 'next/link'
-import AppBar from '@material-ui/core/AppBar'
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
 // import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 import { makeStyles } from '@material-ui/core/styles'
+
+import {
+  AppBar,
+  Paper,
+  Grid,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+} from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {

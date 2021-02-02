@@ -1,15 +1,15 @@
 import type { FC } from 'react'
 import Link from 'next/link'
 import type { NextPage } from 'next'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon, { ListItemIconProps } from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import BuildIcon from '@material-ui/icons/Build'
-import EditIcon from '@material-ui/icons/Edit'
-import VisibilityIcon from '@material-ui/icons/Visibility'
-import ShareIcon from '@material-ui/icons/Share'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import type { ListItemIconProps } from '@material-ui/core'
+import {
+  Build as BuildIcon,
+  Edit as EditIcon,
+  Visibility as VisibilityIcon,
+  Share as ShareIcon,
+  AccountCircle as AccountCircleIcon,
+} from '@material-ui/icons'
 
 import { makeStyles } from '@material-ui/core/styles'
 

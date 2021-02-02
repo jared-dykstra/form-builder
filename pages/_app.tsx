@@ -2,13 +2,14 @@ import { useMemo, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import { CssBaseline } from '@material-ui/core'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const theme = useMemo(() => createMuiTheme(), [])
 
   // TODO: This seems so janky.  There's got to be a better way to integrate material-ui to next.js
   // At least with SSR there wouldn't be a CSS flash
+  // (This was recommended by )
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
