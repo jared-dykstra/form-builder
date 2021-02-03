@@ -1,7 +1,6 @@
 import { useCallback, useReducer, useMemo } from 'react'
 
-import initialState from './initialState'
-import type { State } from './initialState'
+import { initialState, State } from './initialState'
 import reducer from './reducer'
 import type { AddQuestion } from './actions'
 
@@ -20,14 +19,19 @@ export const useFormBuilder = (id: string) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const addQuestion = useCallback(
-    (payload: AddQuestion) => dispatch({ type: 'addQuestion', payload }),
+    (formId: string, payload: AddQuestion) =>
+      dispatch({ type: 'addQuestion', formId, payload }),
     []
   )
+
+  console.log('useFormBuilder', { id, state })
 
   return useMemo(
     () => ({
       addQuestion,
-      form: currentFormSelector(state, id),
+      // TODO: state is Readonly<> ... but that's only supposed to happen if I used Immer's castImmutable() function
+      // Noticed that https://github.com/immerjs/immer/pull/702 freezing is now on by default, even in prod
+      form: currentFormSelector(state as State, id),
     }),
     [id, state, addQuestion]
   )

@@ -1,8 +1,19 @@
-import type { Form } from 'types'
+import type { Form, FormDefinition, FieldValues } from 'types'
 
 export type State = Record<string, Form>
 
-const initialState: State = {
+export const initialFormDefinition: FormDefinition = {
+  dirty: true,
+  fields: {},
+  sortOrder: [],
+}
+
+export const initialFieldValues: FieldValues = {
+  dirty: false,
+  values: {},
+}
+
+export const initialState: State = {
   '1': {
     id: '1',
     name: 'hardcoded example form',
@@ -24,5 +35,3 @@ const initialState: State = {
     },
   },
 }
-
-export default initialState

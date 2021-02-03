@@ -1,13 +1,44 @@
-import type { State } from './initialState'
+import { original, produce, setAutoFreeze, Draft } from 'immer'
+import { v4 as uuidV4 } from 'uuid'
+
+setAutoFreeze(false)
+
+import {
+  initialFormDefinition,
+  initialFieldValues,
+  State,
+} from './initialState'
 import type { Action } from './actions'
 
-export default (state: State, action: Action) => {
+const reducer = produce((draft: Draft<State>, action: Action) => {
+  const { formId } = action
+  const currentState = original(draft)
+
+  console.log(`reducer: ${action.type}`, action)
+
   switch (action.type) {
     case 'addQuestion':
-      console.log('TODO - Immer')
+      // If brand new, create a new blank form definition
+      if (currentState && !currentState[formId]) {
+        draft[formId] = {
+          id: formId,
+          definition: initialFormDefinition,
+          fieldValues: initialFieldValues,
+        }
+      }
+
+      // Create and Append field
+      {
+        draft[formId].definition.dirty = true
+        const fieldId = uuidV4()
+        draft[formId].definition.fields[fieldId] = { ...action.payload }
+        draft[formId].definition.sortOrder.push(fieldId)
+      }
+
       break
     default:
       throw new Error()
   }
-  return state
-}
+})
+
+export default reducer
