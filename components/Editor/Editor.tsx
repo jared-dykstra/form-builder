@@ -2,9 +2,7 @@ import { useCallback, FC } from 'react'
 import { makeStyles } from '@material-ui/core'
 import { Add as AddIcon } from '@material-ui/icons'
 
-import { FabMenu } from 'components'
-import { Form } from 'types'
-import type { AddQuestion, UpdateQuestion } from 'hooks/useFormBuilder'
+import { FabMenu, useFormContext } from 'components'
 
 import { FieldEditor } from './FieldEditor'
 
@@ -15,13 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-interface Props {
-  form: Form
-  addQuestion: (payload: AddQuestion) => void
-  updateQuestion: (payload: UpdateQuestion) => void
-}
-
-export const Editor: FC<Props> = ({ form, addQuestion, updateQuestion }) => {
+export const Editor = () => {
+  const { form, addQuestion, updateQuestion } = useFormContext()
   const classes = useStyles()
 
   const fields = form?.definition?.fields ?? {}

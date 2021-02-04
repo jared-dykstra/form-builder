@@ -1,6 +1,5 @@
-import type { FC } from 'react'
 import { makeStyles } from '@material-ui/core'
-import { Form } from 'types'
+import { useFormContext } from 'components'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,11 +8,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-interface Props {
-  form: Form
-}
+export const Viewer = () => {
+  const { form } = useFormContext()
 
-export const Viewer: FC<Props> = ({ form }) => {
   const classes = useStyles()
 
   return (

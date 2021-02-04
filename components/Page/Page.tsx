@@ -4,6 +4,7 @@ import {
   AccountCircle as AccountCircleIcon,
   Home as HomeIcon,
 } from '@material-ui/icons'
+import { withErrorBoundary, FallbackProps } from 'react-error-boundary'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export const Page: FC<Props> = ({ splash = false, children }) => {
+const PageInner: FC<Props> = ({ splash = false, children }) => {
   const classes = useStyles({ splash })
 
   return (
@@ -96,3 +97,20 @@ export const Page: FC<Props> = ({ splash = false, children }) => {
     </Box>
   )
 }
+
+const FallbackComponent: FC<FallbackProps> = ({ error }) => (
+  <PageInner>
+    {error.name && <Typography variant="h2">{error.name}</Typography>}
+    {error.message && <Typography variant="body1">{error.message}</Typography>}
+    {error.stack && process.env.NODE_ENV !== 'production' && (
+      <pre>{error.stack}</pre>
+    )}
+  </PageInner>
+)
+
+export const Page = withErrorBoundary(PageInner, {
+  FallbackComponent,
+  onError: (/*error, info */) => {
+    /* TODO: Send to a service like sentry.io or bugsnag or whatever (Sentry comes with its own ErrorBoundary impl) */
+  },
+})

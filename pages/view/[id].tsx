@@ -1,7 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
 
-import { Viewer, Page } from 'components'
-import { useFormBuilder } from 'hooks'
+import { FormContext, Viewer, Page } from 'components'
 
 interface Props {
   id: string
@@ -19,11 +18,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 }
 
 const ViewPage: NextPage<Props> = ({ id }) => {
-  const { form } = useFormBuilder(id)
   return (
-    <Page>
-      <Viewer form={form} />
-    </Page>
+    <FormContext formId={id}>
+      <Page>
+        <Viewer />
+      </Page>
+    </FormContext>
   )
 }
 

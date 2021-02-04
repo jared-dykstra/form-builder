@@ -1,7 +1,5 @@
-import type { FC } from 'react'
 import { Paper, Grid, makeStyles } from '@material-ui/core'
-import { Editor, Viewer } from 'components'
-import { useFormBuilder } from 'hooks'
+import { Editor, Viewer, useFormContext } from 'components'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,24 +13,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-interface Props {
-  id: string
-}
-
-export const EditorWithPreview: FC<Props> = ({ id }) => {
+export const EditorWithPreview = () => {
   const classes = useStyles()
-  const { form, addQuestion, updateQuestion } = useFormBuilder(id)
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} sm={12} md={7}>
-        <Editor
-          form={form}
-          addQuestion={addQuestion}
-          updateQuestion={updateQuestion}
-        />
+        <Editor />
       </Grid>
       <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
-        <Viewer form={form} />
+        <Viewer />
       </Grid>
     </Grid>
   )

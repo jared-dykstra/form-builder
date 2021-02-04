@@ -24,6 +24,7 @@
     "next": "latest",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-error-boundary": "^3.1.0",
     "react-hook-form": "^6.15.1",
     "swr": "0.1.18",
     "uuid": "^8.3.2"

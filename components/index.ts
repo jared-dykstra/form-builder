@@ -1,4 +1,5 @@
 export * from './Editor'
 export * from './FabMenu'
+export * from './FormContext'
 export * from './Page'
 export * from './Viewer'
