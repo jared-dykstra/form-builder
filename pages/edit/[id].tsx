@@ -1,9 +1,25 @@
+import type { GetServerSideProps, NextPage } from 'next'
 import { EditorWithPreview, Page } from 'components'
 
-const EditPage = () => {
+interface Props {
+  id: string
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  params,
+}) => {
+  const id = params?.id
+  return {
+    props: {
+      id: typeof id === 'string' ? id : '',
+    },
+  }
+}
+
+const EditPage: NextPage<Props> = ({ id }) => {
   return (
     <Page>
-      <EditorWithPreview />
+      <EditorWithPreview id={id} />
     </Page>
   )
 }

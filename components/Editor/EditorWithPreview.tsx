@@ -1,6 +1,7 @@
+import type { FC } from 'react'
 import { Paper, Grid, makeStyles } from '@material-ui/core'
 import { Editor, Viewer } from 'components'
-import { useId, useFormBuilder } from 'hooks'
+import { useFormBuilder } from 'hooks'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,9 +15,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export const EditorWithPreview = () => {
+interface Props {
+  id: string
+}
+
+export const EditorWithPreview: FC<Props> = ({ id }) => {
   const classes = useStyles()
-  const id = useId()
   const { form, addQuestion } = useFormBuilder(id)
   return (
     <Grid container className={classes.root}>
