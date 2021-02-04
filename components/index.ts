@@ -1,3 +1,4 @@
 export * from './Editor'
-export * from './Viewer'
+export * from './FabMenu'
 export * from './Page'
+export * from './Viewer'

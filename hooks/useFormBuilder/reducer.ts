@@ -8,7 +8,7 @@ import {
   initialFieldValues,
   State,
 } from './initialState'
-import type { Action } from './actions'
+import type { Action, UpdateQuestion } from './actions'
 
 const reducer = produce((draft: Draft<State>, action: Action) => {
   const { formId } = action
@@ -34,8 +34,15 @@ const reducer = produce((draft: Draft<State>, action: Action) => {
         draft[formId].definition.fields[fieldId] = { ...action.payload }
         draft[formId].definition.sortOrder.push(fieldId)
       }
-
       break
+    case 'updateQuestion':
+      {
+        const { id: fieldId, ...rest } = action.payload as UpdateQuestion
+        draft[formId].definition.dirty = true
+        draft[formId].definition.fields[fieldId] = { ...rest }
+      }
+      break
+
     default:
       throw new Error()
   }

@@ -11,15 +11,36 @@ import {
   makeStyles,
   createStyles,
 } from '@material-ui/core'
-import { Add as AddIcon } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       display: 'flex',
     },
+    popper: {
+      // Render in front of <Fab />
+      zIndex: 5,
+    },
     paper: {
       padding: theme.spacing(1, 1),
+    },
+    disableElevation: {
+      boxShadow: 'none',
+      '&:hover': {
+        boxShadow: 'none',
+        '@media (hover: none)': {
+          boxShadow: 'none',
+        },
+      },
+      '&$focusVisible': {
+        boxShadow: 'none',
+      },
+      '&:active': {
+        boxShadow: 'none',
+      },
+      '&$disabled': {
+        boxShadow: 'none',
+      },
     },
   })
 )
@@ -43,9 +64,22 @@ interface Props {
   prompt?: string
   options: Record<string, string>
   onSelect: (id: string) => void
+  color?: 'primary' | 'secondary' | 'default'
+  size?: 'small' | 'medium' | 'large'
+  icon?: JSX.Element
+  flat?: boolean
 }
 
-export const FabMenu: FC<Props> = ({ title, options, prompt, onSelect }) => {
+export const FabMenu: FC<Props> = ({
+  title,
+  options,
+  prompt,
+  onSelect,
+  color,
+  size,
+  icon,
+  flat = false,
+}) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
   const anchorRef = React.useRef<HTMLButtonElement>(null)
@@ -91,17 +125,17 @@ export const FabMenu: FC<Props> = ({ title, options, prompt, onSelect }) => {
     <div className={classes.root}>
       <div>
         <Fab
-          color="secondary"
-          size="large"
+          color={color}
+          size={size}
           variant="extended"
           ref={anchorRef}
           aria-label="add"
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
+          className={!flat ? classes.disableElevation : undefined}
         >
-          <AddIcon />
-          {title}
+          {icon}&nbsp;{title}
         </Fab>
         <Popper
           open={open}
@@ -109,6 +143,7 @@ export const FabMenu: FC<Props> = ({ title, options, prompt, onSelect }) => {
           role={undefined}
           transition
           disablePortal
+          className={classes.popper}
         >
           {({ TransitionProps, placement }) => (
             <Grow

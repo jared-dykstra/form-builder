@@ -21,11 +21,15 @@ interface Props {
 
 export const EditorWithPreview: FC<Props> = ({ id }) => {
   const classes = useStyles()
-  const { form, addQuestion } = useFormBuilder(id)
+  const { form, addQuestion, updateQuestion } = useFormBuilder(id)
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} sm={12} md={7}>
-        <Editor form={form} addQuestion={addQuestion} />
+        <Editor
+          form={form}
+          addQuestion={addQuestion}
+          updateQuestion={updateQuestion}
+        />
       </Grid>
       <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
         <Viewer form={form} />

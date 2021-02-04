@@ -7,6 +7,7 @@ type FieldId = Id
 export interface FieldDefinition {
   type: 'text' | 'select'
   label: string
+  id?: string
 }
 export interface FormDefinition {
   dirty: boolean

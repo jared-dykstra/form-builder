@@ -1,10 +1,12 @@
 import { useCallback, FC } from 'react'
 import { makeStyles } from '@material-ui/core'
+import { Add as AddIcon } from '@material-ui/icons'
 
-import { FabMenu } from 'components/FabMenu/FabMenu'
+import { FabMenu } from 'components'
 import { Form } from 'types'
-import type { AddQuestion } from 'hooks/useFormBuilder/actions'
-import { useId } from 'hooks'
+import type { AddQuestion, UpdateQuestion } from 'hooks/useFormBuilder'
+
+import { FieldEditor } from './FieldEditor'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,23 +17,31 @@ const useStyles = makeStyles((theme) => ({
 
 interface Props {
   form: Form
-  addQuestion: (id: string, payload: AddQuestion) => void
+  addQuestion: (payload: AddQuestion) => void
+  updateQuestion: (payload: UpdateQuestion) => void
 }
 
-export const Editor: FC<Props> = ({ form, addQuestion }) => {
+export const Editor: FC<Props> = ({ form, addQuestion, updateQuestion }) => {
   const classes = useStyles()
-  const id = useId()
 
   const fields = form?.definition?.fields ?? {}
   const hasQuestions = Object.keys(fields).length > 0
 
-  const handleAdd = useCallback(
-    (type) => addQuestion(id, { label: 'new', type }),
-    [addQuestion, id]
-  )
+  const handleAdd = useCallback((type) => addQuestion({ label: '', type }), [
+    addQuestion,
+  ])
 
   return (
     <div className={classes.root}>
+      {Object.entries(fields).map(([id, field], number) => (
+        <FieldEditor
+          key={id}
+          id={id}
+          number={number + 1}
+          field={field}
+          updateQuestion={updateQuestion}
+        />
+      ))}
       <FabMenu
         title={hasQuestions ? 'Add new question' : 'Add your first question'}
         prompt="Choose a question type"
@@ -40,6 +50,10 @@ export const Editor: FC<Props> = ({ form, addQuestion }) => {
           select: 'Select',
         }}
         onSelect={handleAdd}
+        color="secondary"
+        size="large"
+        icon={<AddIcon />}
+        flat
       />
     </div>
   )
